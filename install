@@ -268,7 +268,7 @@ echo "* Build XGraph-$XGRAPHVER"
 echo "============================================================"
 
 cd ./xgraph-$XGRAPHVER
-./configure --prefix=../
+./configure --prefix=${CUR_PATH}
 if  [ "${test_cygwin}" = "true" ]; then
        touch stamp-h;
 fi;
