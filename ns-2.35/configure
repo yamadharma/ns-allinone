@@ -6650,7 +6650,8 @@ TCLCL_H_PLACES="\
                 /import/Tcl/include \
                 /usr/local/include \
                 /usr/contrib/include \
-                /usr/include"
+                /usr/include \
+                /usr/include/tclcl"
 TCLCL_H_PLACES_D="$d \
  		$d/include"
 TCLCL_LIB_PLACES="\

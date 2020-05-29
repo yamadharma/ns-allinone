@@ -100,17 +100,10 @@ public:
 
 	int size() const { return (size_); }
 	int pkts() const { return (pkts_); }
-#if defined(HAVE_INT64)
-	int64_t parrivals() const { return (parrivals_); }	
-	int64_t barrivals() const { return (barrivals_); }
-	int64_t pdepartures() const { return (pdepartures_); }
-	int64_t bdepartures() const { return (bdepartures_); }
-#else /* no 64-bit integer */
 	int parrivals() const { return (parrivals_); }
 	int barrivals() const { return (barrivals_); }
 	int pdepartures() const { return (pdepartures_); }
 	int bdepartures() const { return (bdepartures_); }
-#endif
 	int pdrops() const { return (pdrops_); }
 	int pmarks() const { return (pmarks_); }
 	int bdrops() const { return (bdrops_); }
@@ -136,17 +129,10 @@ protected:
 	int size_;			// current queue size (bytes)
 	int pkts_;			// current queue size (packets)
 	// aggregate counters bytes/packets
-#if defined(HAVE_INT64)
-	int64_t parrivals_;
-	int64_t barrivals_;
-	int64_t pdepartures_;
-	int64_t bdepartures_;
-#else /* no 64-bit integer */
 	int parrivals_;
 	int barrivals_;
 	int pdepartures_;
 	int bdepartures_;
-#endif
 	int pdrops_;
 	int pmarks_;
 	int bdrops_;

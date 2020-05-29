@@ -81,7 +81,7 @@ setbox: setbox.o
 	$(CCX) -o setbox $@.o $(LDFLAGS) $(CFLAGS) $(LIBS)
 
 clean:
-	@rm -f setdest setbox *.o *.core
+	@rm -f setdest calcdest setbox *.o *.core
 
 .SUFFIXES: .cc
 
