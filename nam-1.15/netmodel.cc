@@ -308,7 +308,7 @@ int NetModel::addr2id(int addr) const
 	Tcl_HashEntry *he = Tcl_FindHashEntry(addrHash_, (const char *)addr);
 	if (he == NULL)
 		return -1;
-	return *Tcl_GetHashValue(he);
+	return *(int *)Tcl_GetHashValue(he);
 }
 
 //----------------------------------------------------------------------
@@ -2761,7 +2761,7 @@ int NetModel::lookupObjname(const char *name)
 	Tcl_HashEntry *he = Tcl_FindHashEntry(objnameHash_, n);
 	if (he == NULL)
 		return -1;
-	return *Tcl_GetHashValue(he);
+	return *(int *)Tcl_GetHashValue(he);
 #undef STATIC_NAMELEN
 }
 

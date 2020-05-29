@@ -1,5 +1,12 @@
 #define stop_width 14
 #define stop_height 12
-static char stop_bits[] = {
+/*
+ * C++11 compilers (gcc) may complain error: narrowing conversion of ‘252’
+ * from ‘int’ to ‘char’ inside { } is ill-formed in C++11.  However, Tk
+ * expects Tk_DefineBitmap (in common/tkAppInit.cc) to pass a signed char.
+ * The workaround is to declare these as unsigned char, and cast to
+ * signed char in the Tk_DefineBitmap() call.
+ */
+static unsigned char stop_bits[] = {
    0x00, 0x00, 0x38, 0x07, 0x38, 0x07, 0x38, 0x07, 0x38, 0x07, 0x38, 0x07,
    0x38, 0x07, 0x38, 0x07, 0x38, 0x07, 0x38, 0x07, 0x38, 0x07, 0x00, 0x00};

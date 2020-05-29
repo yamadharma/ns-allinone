@@ -142,68 +142,68 @@ void loadbitmaps(Tcl_Interp* tcl)
 //  	Tk_DefineBitmap(tcl, Tk_GetUid("edit"),
 //  			edit_bits, edit_width, edit_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("netedit"),
-			netedit_bits, netedit_width, netedit_height);
+			(char*) netedit_bits, netedit_width, netedit_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("netview"),
-			netview_bits, netview_width, netview_height);
+			(char*) netview_bits, netview_width, netview_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("nodeup"),
-			nodeup_bits, nodeup_width, nodeup_height);
+			(char*) nodeup_bits, nodeup_width, nodeup_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("nodedown"),
-			nodedown_bits, nodedown_width, nodedown_height);
+			(char*) nodedown_bits, nodedown_width, nodedown_height);
 
 	Tk_DefineBitmap(tcl, Tk_GetUid("play"),
-			play_bits, play_width, play_height);
+			(char*) play_bits, play_width, play_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("back"),
-			back_bits, back_width, back_height);
+			(char*) back_bits, back_width, back_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("stop"),
-			stop_bits, stop_width, stop_height);
+			(char*) stop_bits, stop_width, stop_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("eject"),
-			eject_bits, eject_width, eject_height);
+			(char*) eject_bits, eject_width, eject_height);
 
 	Tk_DefineBitmap(tcl, Tk_GetUid("rew"),
-			rew_bits, rew_width, rew_height);
+			(char*) rew_bits, rew_width, rew_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("ff"),
-			ff_bits, ff_width, ff_height);
+			(char*) ff_bits, ff_width, ff_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("monitors"),
-			monitors_bits, monitors_width, monitors_height);
+			(char*) monitors_bits, monitors_width, monitors_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("time"),
-			time_bits, time_width, time_height);
+			(char*) time_bits, time_width, time_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("zoomin"),
-			zoomin_bits, zoomin_width, zoomin_height);
+			(char*) zoomin_bits, zoomin_width, zoomin_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("zoomout"),
-			zoomout_bits, zoomout_width, zoomout_height);
+			(char*) zoomout_bits, zoomout_width, zoomout_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("pullright"),
-			pullright_bits, pullright_width, pullright_height);
+			(char*) pullright_bits, pullright_width, pullright_height);
 
   // Used in nam editor toolbar
   Tk_DefineBitmap(tcl, Tk_GetUid("select"),
-                  select_bits, select_width, select_height);
+                  (char*) select_bits, select_width, select_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("addnode"),
-                  addnode_bits, addnode_width, addnode_height);
+                  (char*) addnode_bits, addnode_width, addnode_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("addlink"),
-                  addlink_bits, addlink_width, addlink_height);
+                  (char*) addlink_bits, addlink_width, addlink_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("cut"),
-                  cut_bits, cut_width, cut_height);
+                  (char*) cut_bits, cut_width, cut_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("delete"),
-                  delete_bits, delete_width, delete_height);
+                  (char*) delete_bits, delete_width, delete_height);
 
   Tk_DefineBitmap(tcl, Tk_GetUid("mark1"),
-                  mark1_bits, mark1_width, mark1_height);
+                  (char*) mark1_bits, mark1_width, mark1_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("mark2"),
-                  mark2_bits, mark2_width, mark2_height);
+                  (char*) mark2_bits, mark2_width, mark2_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("mark3"),
-                  mark3_bits, mark3_width, mark3_height);
+                  (char*) mark3_bits, mark3_width, mark3_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("mark4"),
-                  mark4_bits, mark4_width, mark4_height);
+                  (char*) mark4_bits, mark4_width, mark4_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("mark5"),
-                  mark5_bits, mark5_width, mark5_height);
+                  (char*) mark5_bits, mark5_width, mark5_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("mark6"),
-                  mark6_bits, mark6_width, mark6_height);
+                  (char*) mark6_bits, mark6_width, mark6_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("mark7"),
-                  mark7_bits, mark7_width, mark7_height);
+                  (char*) mark7_bits, mark7_width, mark7_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("mark8"),
-                  mark8_bits, mark8_width, mark8_height);
+                  (char*) mark8_bits, mark8_width, mark8_height);
   Tk_DefineBitmap(tcl, Tk_GetUid("updir"),
-                  updir_bits, updir_width, updir_height);
+                  (char*) updir_bits, updir_width, updir_height);
 }
 
 void adios()
@@ -330,6 +330,8 @@ main(int argc, char **argv) {
 #endif
 
 	Tcl_Interp *interp = Tcl_CreateInterp();
+	Tcl_InitStubs(interp, "8.1", 0);
+	Tk_InitStubs(interp, "8.1", 0);
 	if (Tcl_Init(interp) == TCL_ERROR) {
 		printf("%s\n", interp->result);
 		abort();

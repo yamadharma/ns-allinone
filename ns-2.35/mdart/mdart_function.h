@@ -69,12 +69,14 @@
 
 #include <mdart/mdart_packet.h>
 
+// use of stl is pervasive in mdart code
+using namespace std;
 
 
 //------------------------------------------------------------------------------
 // Defining debug facilities
 //------------------------------------------------------------------------------
-//#define DEBUG
+//#define DEBUG_MDART_GENERAL
 //#define DEBUG_PACKET_FORWARDING
 //#define DEBUG_ADDRESS_ALLOCATION
 //#define DEBUG_NDP

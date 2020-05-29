@@ -100,7 +100,7 @@ inline static void macFailedCallback(Packet *recvPkt, void *arg) {
 // MDART timer 
 //------------------------------------------------------------------------------
 void MDARTTimer::handle(Event*) {
-//#ifdef DEBUG
+//#ifdef DEBUG_MDART_GENERAL
 //	fprintf(stdout, "%.9f\tMDARTTimer::handle\t\t\tin node %d\twith address %s\n", CURRENT_TIME, mdart_->id_, bitString(mdart_->address_));
 //#endif
 	double interval_ = NDP_MIN_HELLO_INTERVAL + ((NDP_MAX_HELLO_INTERVAL - NDP_MIN_HELLO_INTERVAL) * Random::uniform());
@@ -144,7 +144,7 @@ MDART::MDART(nsaddr_t id) : Agent(PT_MDART) {
 //	MDART::lookupTable_ [id_] = address_;
 	// dht
 //	lookupTableAddEntry(id_, address_);
-// #ifdef DEBUG
+// #ifdef DEBUG_MDART_GENERAL
 // 	fprintf(stdout, "%.9f\tMDART::MDART()\t\t\t\tin node %d\twith address %s\n", CURRENT_TIME, id_, bitAddress_.to_string().c_str());
 // #endif
 	mdartTimer_ = new MDARTTimer(this);
@@ -160,7 +160,7 @@ MDART::MDART(nsaddr_t id) : Agent(PT_MDART) {
 
 
 MDART::~MDART() {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 	fprintf(stdout, "%.9f\tMDART::~MDART()\t\t\t\tin node %d\twith address %s\n", CURRENT_TIME, id_, bitString(address_));
 #endif
 	delete mdartTimer_;
@@ -170,7 +170,7 @@ MDART::~MDART() {
 
 
 int MDART::command(int argc, const char* const* argv) {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 			fprintf(stdout, "%.9f\tMDART::command()\t\t\tin node %d\twith address %s\n", CURRENT_TIME, id_, bitString(address_));
 #endif
 	if (argc == 2) {
@@ -184,7 +184,7 @@ int MDART::command(int argc, const char* const* argv) {
 				logtarget_->pt_->dump();
 			}
 			else {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 				fprintf(stdout, "%f_ %d_ If you want to print the routing table size you must create a trace file in your tcl script", CURRENT_TIME, address_);
 #endif
 			}
@@ -196,7 +196,7 @@ int MDART::command(int argc, const char* const* argv) {
 				logtarget_->pt_->dump();
 			}
 			else {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 				fprintf(stdout, "%f_ %d_ If you want to print the neighbor degree you must create a trace file in your tcl script", CURRENT_TIME, address_);
 #endif
 			}
@@ -208,7 +208,7 @@ int MDART::command(int argc, const char* const* argv) {
 				logtarget_->pt_->dump();
 			}
 			else {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 				fprintf(stdout, "%f_ %d_ If you want to print the real neighbor degree you must create a trace file in your tcl script", CURRENT_TIME, address_);
 #endif
 			}
@@ -277,7 +277,7 @@ int MDART::command(int argc, const char* const* argv) {
 				}
 			}
 			else {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 				fprintf(stdout, "%f_ %d_ If you want to print the lookup table you must create a trace file in your tcl script", CURRENT_TIME, address_);
 #endif
 			}
@@ -294,7 +294,7 @@ int MDART::command(int argc, const char* const* argv) {
 				}
 			}
 			else {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 				fprintf(stdout, "%f_ %d_ If you want to print the lookup table you must create a trace file in your tcl script", CURRENT_TIME, address_);
 #endif
 			}
@@ -351,7 +351,7 @@ int MDART::command(int argc, const char* const* argv) {
 // Packet routines
 //------------------------------------------------------------------------------
 void MDART::recv(Packet* recvPkt_, Handler* h) {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 	fprintf(stdout, "%.9f\tMDART::recv()\t\t\t\tin node %d\twith address %s\n", CURRENT_TIME, id_, bitString(address_));
 #endif
 	struct hdr_cmn* ch = HDR_CMN(recvPkt_);
@@ -562,7 +562,7 @@ void MDART::forward(Packet* sendPkt_) {
 
 
 void MDART::recvMDART(Packet* recvPkt_) {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 	fprintf(stdout, "%.9f\t%s\t\t\tin node %d\twith address %s\n",  CURRENT_TIME, __FUNCTION__, id_, bitString(address_));
 #endif
 	struct hdr_mdart* recvPktRh_ = HDR_MDART(recvPkt_);
@@ -598,7 +598,7 @@ void MDART::recvMDART(Packet* recvPkt_) {
 			idp_->recvReplyInfo(recvPkt_);
 			break;*/
 		default:
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 			fprintf(stderr, "!!!\tinvalid MDART type (%x)\n", recvPktRh_->type_);
 #endif
 			exit(1);
@@ -622,7 +622,7 @@ void MDART::lookupTableRmEntry(nsaddr_t uid_) {
 }
 
 void MDART::lookupTableAddEntry(nsaddr_t uid, nsaddr_t address) {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 	fprintf(stdout, "%.9f\tMDART::lookupTableAddEntry(%d, %s)\tin node %d\twith address %s\n", CURRENT_TIME, uid, bitString(address), id_, bitString(address_));
 #endif
 	MDART::lookupTable_[uid] = address;

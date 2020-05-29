@@ -205,13 +205,13 @@ void NDP::startNeighborTimer() {
  * NDP neighbor list functions
  ******************************************************************************/
 Neighbor* NDP::neighborLookup(nsaddr_t id) {
-// #ifdef DEBUG
+// #ifdef DEBUG_MDART_GENERAL
 // 	fprintf(stdout, "%.9f\tNDP::neighborLookup(%d)\t\t\tin node %d\twith address %s\n", CURRENT_TIME, id, mdart_->id_, bitString(mdart_->address_));
 // #endif
 	neighborSet::iterator neighbor_;
 	for (neighbor_ = neighborSet_->begin(); neighbor_ != neighborSet_->end(); ++neighbor_) {
 		if((*neighbor_)->id() == id) {
-// #ifdef DEBUG
+// #ifdef DEBUG_MDART_GENERAL
 // 			fprintf(stdout, "\tId found\n");
 // #endif
 			return (*neighbor_);
@@ -284,14 +284,14 @@ void NDP::neighborPurge(void) {
 
 /*	neighborSet::iterator neighbor_;
 	for (neighbor_ = neighborSet_->begin(); neighbor_ != neighborSet_->end(); ++neighbor_) {
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
 			fprintf(stdout, "\tNeighbor id = %d\texpire = %.9f\n", (*neighbor_)->id_, (*neighbor_)->expire());
 #endif
 		if((*neighbor_)->expire() <= now) {
 //			mdart_->routingTable_->purge((*neighbor_)->id_);
 			neighborSet_->erase(neighbor_);
 			delete (*neighbor_);
-#ifdef DEBUG
+#ifdef DEBUG_MDART_GENERAL
  			fprintf(stdout, "\tNeighbor purged\n");
 #endif
 		}
