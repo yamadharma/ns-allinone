@@ -97,7 +97,7 @@ void Group::get_members(int *mbrs)
 	for (he = Tcl_FirstHashEntry(nodeHash_, &hs);
 	     he != NULL;
 	     he = Tcl_NextHashEntry(&hs), i++) 
-		mbrs[i] = *Tcl_GetHashValue(he);
+		mbrs[i] = *(int *)Tcl_GetHashValue(he);
 }
 
 void Group::draw(View * nv, double now) {
