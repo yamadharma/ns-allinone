@@ -549,7 +549,7 @@ dirs:
 	done
 
 
-install: dirs force install-ns install-man
+install: dirs force install-ns install-man install-recursive
 
 install-ns: force
 	$(INSTALL) -m 755 ns $(DESTDIR)$(BINDEST)
