@@ -379,7 +379,7 @@ echo "============================================================"
 
 cd ./zlib-$ZLIBVER
 
-if ./configure --exec-prefix=../ --prefix=../
+if ./configure --prefix=../
 then
 	if make
 	then
