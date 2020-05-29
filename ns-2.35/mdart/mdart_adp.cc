@@ -49,6 +49,22 @@
 #include <mdart/mdart.h>
 #include <mdart/mdart_function.h>
 
+// Helper function
+static nsaddr_t mdart_hash(nsaddr_t id) {
+        bitset<ADDR_SIZE> tempAddress_ (id);
+        bitset<ADDR_SIZE> address_;
+        for(unsigned int i=0; i<ADDR_SIZE; i++) {
+                if (tempAddress_.test(i)) {
+                        address_.set(ADDR_SIZE - 1 - i);
+                }
+        }
+        address_.flip(ADDR_SIZE - 1);
+        nsaddr_t temp = (nsaddr_t) address_.to_ulong();
+#ifdef DEBUG
+        fprintf(stdout, "\thash = %s\n", bitString(temp));
+#endif
+        return temp;
+}
 
 
 //------------------------------------------------------------------------------
@@ -105,7 +121,7 @@ void ADP::sendDarq(nsaddr_t reqId, int reqpktId) {
 #ifdef DEBUG_ADP
 	fprintf(stdout, "%.9f\tADP::sendDarq(%d)\t\t\tin node %d\twith address %s\n", CURRENT_TIME, reqId, mdart_->id_, bitString(mdart_->address_));
 #endif
-	nsaddr_t dstAdd_ = hash(reqId);
+	nsaddr_t dstAdd_ = mdart_hash(reqId);
 #ifdef DEBUG_ADP
 	fprintf(stdout, "\tsending darq for node %s\n", bitString(dstAdd_));
 #endif
@@ -393,7 +409,7 @@ void ADP::sendDaup() {
 	fprintf(stdout, "%.9f\tMDART::sendDaup()\t\t\t\tin node %d\twith address %s\n", CURRENT_TIME, mdart_->id_, bitString(mdart_->address_));
 //	printDHT();
 #endif
-	nsaddr_t dstAdd_ = hash(mdart_->id_);
+	nsaddr_t dstAdd_ = mdart_hash(mdart_->id_);
 #ifdef DEBUG_ADP
 	fprintf(stdout, "\tsending daup for node  %s\n", bitString(dstAdd_));
 	mdart_->routingTable_->print();
