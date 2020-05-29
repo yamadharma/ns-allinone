@@ -1,4 +1,4 @@
-#! /usr/sww/bin/tclsh
+#! /usr/bin/tclsh
 
 set burstsize 30
 set firstburstsize 0

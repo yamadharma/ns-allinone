@@ -542,14 +542,14 @@ common/ptypes2tcl: common/ptypes2tcl.o
 common/ptypes2tcl.o: common/ptypes2tcl.cc common/packet.h
 
 dirs:
-	for d in $(DESTDIR)$(MANDEST)/man1; do \
+	for d in $(DESTDIR)$(MANDEST)/man1 $(DESTDIR)$(BINDEST); do \
 		if [ ! -d $$d ]; then \
 			mkdir -p $$d ;\
 		fi;\
 	done
 
 
-install: dirs force install-ns install-man
+install: dirs force install-ns install-man install-recursive
 
 install-ns: force
 	$(INSTALL) -m 755 ns $(DESTDIR)$(BINDEST)
