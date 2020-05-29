@@ -30,14 +30,22 @@ extern EmbeddedTcl et_tk;
 
 /* MSVC requires this global var declaration to be outside of 'extern "C"' */
 #ifdef MEMDEBUG_SIMULATIONS
+#if defined(_MSC_VER)
 #include "mem-trace.h"
 MemTrace *globalMemTrace;
+#endif
 #endif
 
 #define NS_BEGIN_EXTERN_C	extern "C" {
 #define NS_END_EXTERN_C		}
 
 NS_BEGIN_EXTERN_C
+
+/* declaration compatible with clang++ and g++ */
+#if !defined(_MSC_VER)
+#include "mem-trace.h"
+MemTrace *globalMemTrace;
+#endif
 
 #ifdef HAVE_FENV_H
 #include <fenv.h>
@@ -62,14 +70,14 @@ extern int		Tktest_Init _ANSI_ARGS_((Tcl_Interp *interp));
 void loadbitmaps(Tcl_Interp* tcl)
 {
 	Tk_DefineBitmap(tcl, Tk_GetUid("play"),
-			play_bits, play_width, play_height);
+			(char *) play_bits, play_width, play_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("stop"),
-			stop_bits, stop_width, stop_height);
+			(char *) stop_bits, stop_width, stop_height);
 
 	Tk_DefineBitmap(tcl, Tk_GetUid("rewind"),
-			rewind_bits, rewind_width, rewind_height);
+			(char *) rewind_bits, rewind_width, rewind_height);
 	Tk_DefineBitmap(tcl, Tk_GetUid("ff"),
-			ff_bits, ff_width, ff_height);
+			(char *) ff_bits, ff_width, ff_height);
 }
 
 

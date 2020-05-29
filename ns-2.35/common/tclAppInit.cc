@@ -22,14 +22,22 @@ extern EmbeddedTcl et_ns_ptypes;
 
 /* MSVC requires this global var declaration to be outside of 'extern "C"' */
 #ifdef MEMDEBUG_SIMULATIONS
+#if defined(_MSC_VER) 
 #include "mem-trace.h"
 MemTrace *globalMemTrace;
+#endif
 #endif
 
 #define NS_BEGIN_EXTERN_C	extern "C" {
 #define NS_END_EXTERN_C		}
 
 NS_BEGIN_EXTERN_C
+
+/* declaration compatible with clang++ and g++ */
+#if !defined(_MSC_VER) 
+#include "mem-trace.h"
+MemTrace *globalMemTrace;
+#endif
 
 #ifdef HAVE_FENV_H
 #include <fenv.h>
