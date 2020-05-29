@@ -330,6 +330,8 @@ main(int argc, char **argv) {
 #endif
 
 	Tcl_Interp *interp = Tcl_CreateInterp();
+	Tcl_InitStubs(interp, "8.1", 0);
+	Tk_InitStubs(interp, "8.1", 0);
 	if (Tcl_Init(interp) == TCL_ERROR) {
 		printf("%s\n", interp->result);
 		abort();
