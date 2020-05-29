@@ -658,7 +658,7 @@ int ClientPagePool::command(int argc, const char*const* argv)
 			for (he = Tcl_FirstHashEntry(namemap_, &hs); 
 			     he != NULL;
 			     he = Tcl_NextHashEntry(&hs)) {
-				char* retVal = Tcl_GetHashKey(namemap_, he);
+				char* retVal = (char *)Tcl_GetHashKey(namemap_, he);
 				// Convert name to a PageID
 				PageID t1;
 				ClientPage::split_name (retVal, t1);

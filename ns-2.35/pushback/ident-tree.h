@@ -83,7 +83,7 @@ class DropHashTable {
     Tcl_HashSearch searchPtr;
     Tcl_HashEntry * he = Tcl_FirstHashEntry(hashTable_, &searchPtr);
     while (he != NULL) {
-      char * key = Tcl_GetHashKey(hashTable_, he);
+      char * key = (char *)Tcl_GetHashKey(hashTable_, he);
       long value = (long)Tcl_GetHashValue(he);
       printf("%s = %ld\n", key, value);
       he = Tcl_NextHashEntry(&searchPtr);
