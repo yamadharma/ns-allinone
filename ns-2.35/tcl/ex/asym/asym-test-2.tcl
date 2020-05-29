@@ -1,4 +1,4 @@
-#!../../../../ns
+#!/usr/bin/ns
 #source ../../../lan/ns-lan.tcl
 source ../../../ex/asym/util.tcl
 

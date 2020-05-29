@@ -1,4 +1,4 @@
-#! ../../ns
+#!/usr/bin/ns
 source scaling-defaults.tcl
 
 # Usage tree.tcl -rand 1.0 -det 0.05 -seed -size $max >! tmp.dat

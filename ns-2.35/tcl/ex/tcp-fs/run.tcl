@@ -1,4 +1,4 @@
-#! /usr/local/bin/tclsh
+#! /usr/bin/tclsh
 
 #set pdrop_opt {-null -null "-recn -rdrop" "-pdrop" "-recn -rdrop -pdrop"}
 #set tcptype_opt {-fack -fackfs -fackfs -fackfs -fackfs}
