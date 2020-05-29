@@ -1,5 +1,12 @@
 #define play_width 15
 #define play_height 12
-static char play_bits[] = {
+/*
+ * C++11 compilers (gcc) may complain error: narrowing conversion of ‘252’ 
+ * from ‘int’ to ‘char’ inside { } is ill-formed in C++11.  However, Tk
+ * expects Tk_DefineBitmap (in common/tkAppInit.cc) to pass a signed char.
+ * The workaround is to declare these as unsigned char, and cast to 
+ * signed char in the Tk_DefineBitmap() call.  
+ */
+static unsigned char play_bits[] = {
    0x00, 0x00, 0x0c, 0x00, 0x3c, 0x00, 0xfc, 0x00, 0xfc, 0x03, 0xfc, 0x0f,
    0xfc, 0x0f, 0xfc, 0x03, 0xfc, 0x00, 0x3c, 0x00, 0x0c, 0x00, 0x00, 0x00};
