@@ -324,7 +324,7 @@ nsaddr_t RoutingTable::networkId(u_int32_t levelSibling) {
 }
 
 u_int32_t RoutingTable::hopNumber(u_int32_t levelSibling) {
-//#ifdef DEBUG
+//#ifdef DEBUG_MDART_GENERAL
 //	fprintf(stdout, "%.9f\tRoutingTable::cost(%d)\t\t\tin node %d\twith address %s.\n", CURRENT_TIME, levelSibling, mdart_->id(), bitString(mdart_->address()));
 //#endif
 	u_int32_t hopNumber_ = INFINITO;
@@ -333,7 +333,7 @@ u_int32_t RoutingTable::hopNumber(u_int32_t levelSibling) {
 		if ((*itEntry_)->hopNumber() < hopNumber_)
 			hopNumber_ = (*itEntry_)->hopNumber();
 	}
-//#ifdef DEBUG
+//#ifdef DEBUG_MDART_GENERAL
 //	fprintf(stdout, "\tCost is %d.\n", cost_);
 //#endif
 	return hopNumber_;
@@ -346,14 +346,14 @@ double RoutingTable::etxMetric(u_int32_t levelSibling) {
 		if ((*itEntry_)->etxMetric() < etxMetric_)
 			etxMetric_ = (*itEntry_)->etxMetric();
 	}
-//#ifdef DEBUG
+//#ifdef DEBUG_MDART_GENERAL
 //	fprintf(stdout, "\tCost is %d.\n", cost_);
 //#endif
 	return etxMetric_;
 }
 
 bitset<ADDR_SIZE> RoutingTable::routeLog(u_int32_t levelSibling) {
-//#ifdef DEBUG
+//#ifdef DEBUG_MDART_GENERAL
 //	fprintf(stdout, "%.9f\tRoutingTable::routeLog(%d)\t\t\tin node %d\twith address %s.\n", CURRENT_TIME, levelSibling, mdart_->id(), bitString(mdart_->address()));
 //#endif
 	bitset<ADDR_SIZE> routeLog_;
