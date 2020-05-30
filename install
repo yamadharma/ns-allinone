@@ -497,6 +497,8 @@ echo "============================================================"
 echo "* Build OTcl-$OTCLVER"
 echo "============================================================"
 
+ln -s otcl-$OTCLVER otcl
+
 cd ./otcl-$OTCLVER
 
 blame='Please check http://www.isi.edu/nsnam/ns/ns-problems.html for common problems and bug fixes.'
@@ -543,6 +545,8 @@ fi
 echo "============================================================"
 echo "* Build Tclcl-$TCLCLVER"
 echo "============================================================"
+
+ln -s tclcl-$TCLCLVER tclcl
 
 cd ./tclcl-$TCLCLVER
 
@@ -597,9 +601,6 @@ cd ../
 echo "============================================================"
 echo "* Build nam-$NAMVER"
 echo "============================================================"
-
-ln -s otcl-$OTCLVER otcl
-ln -s tclcl-$TCLCLVER tclcl
 
 cd ./nam-$NAMVER
 
