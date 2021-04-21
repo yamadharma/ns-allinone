@@ -57,7 +57,7 @@ TCLSH = @V_TCLSH@
 LIB =  \
 	@V_LIBS@ \
 	@V_LIB_X11@ \
-	@V_LIB@ -lm -lX11 @LIBS@
+	@V_LIB@ -lm -lX11 -lz @LIBS@
 INCLUDE = \
 	-I. @V_INCLUDES@ \
 	@V_INCLUDE_X11@ 
