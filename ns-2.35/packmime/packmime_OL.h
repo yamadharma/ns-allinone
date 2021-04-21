@@ -73,7 +73,7 @@ class PackMimeOpenLoop : public TrafficGenerator {
 	void init();
 	int size_;
 	int seqno_;
-	int64_t maxpkts_;	
+	int maxpkts_;
 	
 	// statistics objects
 	RandomVariable* pm_pac_ia_;
