@@ -213,7 +213,7 @@ void Tcl::error(const char* s)
 	if (strlen(s) > MAX_CODE_TO_DUMP) {
 		s = "\n[code omitted because of length]\n";
 	};
-	fprintf(stderr, "%s: \"%s\": %s\n", application_, s, tcl_->result);
+	fprintf(stderr, "%s: \"%s\": %s\n", application_, s, Tcl_GetStringResult(tcl_));
 	exit(1);
 }
 

@@ -85,7 +85,7 @@ class Tcl {
 	/* may not work at all! */
 	inline char* result() const { return (tcl_->result); }
 #endif  /* TCL_MAJOR_VERSION >= 8 */
-	inline void result(const char* p) { tcl_->result = (char*)p; }
+	inline void result(const char* p) { Tcl_SetResult(tcl_, (char*)p, TCL_STATIC); }
 	void resultf(const char* fmt, ...);
 	inline void CreateCommand(const char* cmd, Tcl_CmdProc* cproc,
 				  ClientData cd = 0,

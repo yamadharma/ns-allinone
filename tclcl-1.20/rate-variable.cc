@@ -82,7 +82,7 @@ char* RateVariable::update_rate_var(ClientData clientData, Tcl_Interp* tcl,
 		flags &= TCL_GLOBAL_ONLY;
 		CONST char* cv = (char *) Tcl_GetVar2(tcl, name1, name2, flags);
 		if (cv == NULL)
-			return (tcl->result);
+			return (char*)Tcl_GetStringResult(tcl);
 		int curval = atoi(cv);
 		double rate = 0.;
 		timeval tv;

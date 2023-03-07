@@ -88,7 +88,7 @@ void Tcl::resultf(const char* fmt, ...)
 	va_list ap;
 	va_start(ap, fmt);
 	vsprintf(bp_, fmt, ap);
-	tcl_->result = bp_;
+	Tcl_SetResult(tcl_, bp_, TCL_STATIC);
 }
 
 void Tcl::add_errorf(const char* fmt, ...)
